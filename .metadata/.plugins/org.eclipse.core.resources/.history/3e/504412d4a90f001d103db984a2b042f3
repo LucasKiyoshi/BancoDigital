@@ -1,0 +1,98 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		String opcao = "";
+		boolean sair = false;
+		
+		
+		try {
+			do {
+				System.out.println("*=== MENU ===*");
+				System.out.println("|0 - Sacar");
+				System.out.println("|1 - Depositar");
+				System.out.println("|2 - Transferir");
+				
+				System.out.print("Informe a opção: ");
+				opcao = sc.nextLine();
+				
+				switch (opcao) {
+				case "0":
+					System.out.println("-> SAQUE");
+					
+					System.out.print("Informe o CPF da pessoa: ");
+					String cpfSacar = sc.nextLine();
+					
+					if(ValidacaoHelper.isContaExistente(contas, cpfSacar)) {
+						String valor;
+						
+						System.out.print("Informe o valor do saque: ");
+						valor = teclado.nextLine();
+						
+						for (Conta conta : contas) {
+							if(conta.getPessoa().getCpf().equals(cpfSacar)) {
+								transacaoHelper.sacar(conta, Double.parseDouble(valor));
+							}
+						}
+					}
+					
+					break;	
+				case "1":
+					System.out.println("-> DEPÓSITO");
+					
+					System.out.print("Informe o CPF da pessoa: ");
+					String cpfDeposito = teclado.nextLine();
+					
+					if(ValidacaoHelper.isContaExistente(contas, cpfDeposito)) {
+						String valor;
+						
+						System.out.print("Informe o valor do depósito: ");
+						valor = teclado.nextLine();
+						
+						for (Conta conta : contas) {
+							if(conta.getPessoa().getCpf().equals(cpfDeposito)) {
+								transacaoHelper.depositar(conta, Double.parseDouble(valor));
+							}
+						}
+					}
+					
+					break;
+				case "2":
+					System.out.println("-> TRANSFERÊNCIA");
+					
+					System.out.print("Informe o CPF do depositante: ");
+					String cpfDepositante = teclado.nextLine();
+					
+					System.out.print("Informe o CPF do recebedor: ");
+					String cpfRecebedor = teclado.nextLine();
+					
+					if(ValidacaoHelper.isContaExistente(contas, cpfDepositante) 
+								&& ValidacaoHelper.isContaExistente(contas, cpfRecebedor)) {
+						Conta contaDepositante = null, contaRecebedor = null;
+						String valor;
+						
+						System.out.print("Informe o valor do depósito: ");
+						valor = teclado.nextLine();
+						
+						for (Conta conta : contas) {
+							if(conta.getPessoa().getCpf().equals(cpfDepositante)) {
+								contaDepositante = conta;
+							}else if (conta.getPessoa().getCpf().equals(cpfRecebedor)){
+								contaRecebedor = conta;
+							}
+						}
+						
+						transacaoHelper.transferir(contaDepositante, contaRecebedor, Double.parseDouble(valor));
+					}
+					
+					break;	
+				default:
+					break;
+				}
+			}while(!sair);
+	}
+
+}

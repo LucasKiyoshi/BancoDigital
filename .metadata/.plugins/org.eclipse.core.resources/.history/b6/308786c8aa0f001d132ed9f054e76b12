@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		String opcao = "";
+		boolean sair = false;
+		
+		
+		try {
+			do {
+				System.out.println("*=== MENU ===*");
+				System.out.println("|0 - Sacar");
+				System.out.println("|1 - Depositar");
+				System.out.println("|2 - Transferir");
+				
+				System.out.print("Informe a opção: ");
+				opcao = sc.nextLine();
+				
+				switch (opcao) {
+				case "0":
+					System.out.println("-> SAQUE");
+						System.out.print("Informe o valor do saque: ");
+						valor = sc.nextLine();
+					}
+					
+					break;	
+				case "1":
+					System.out.println("-> DEPÓSITO");
+						System.out.print("Informe o valor do depósito: ");
+						valor = sc.nextLine();
+					}
+					
+					break;
+				case "2":
+					System.out.println("-> TRANSFERÊNCIA");
+						System.out.print("Informe o valor do depósito: ");
+						valor = sc.nextLine();
+					
+						
+					}
+					
+					break;	
+				default:
+					break;
+				}
+			}while(!sair);
+	}
+
+}
